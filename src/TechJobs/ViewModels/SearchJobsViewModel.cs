@@ -5,7 +5,7 @@ using TechJobs.Models;
 
 namespace TechJobs.ViewModels
 {
-    public class SearchJobsViewModel 
+    public class SearchJobsViewModel : BaseViewModel
     {
         // TODO #7.1 - Extract members common to JobFieldsViewModel
         // to BaseViewModel
@@ -16,28 +16,40 @@ namespace TechJobs.ViewModels
         // The column to search, defaults to all
         public JobFieldType Column { get; set; } = JobFieldType.All;
 
-        // The search value
+       /* // The search value
         [Display(Name = "Keyword:")]
-        public string Value { get; set; } = "";
+        public string Value { get; set; } = "";*/
 
-        // All columns, for display
-        public List<JobFieldType> Columns { get; set; }
-
-        // View title
-        public string Title { get; set; } = "";
-
-        public SearchJobsViewModel()
+        // The search value
+        private string inputValue = "";
+        [Display(Name = "Keyword:")]
+        public string Value
         {
-            // Populate the list of all columns
-
-            Columns = new List<JobFieldType>();
-
-            foreach (JobFieldType enumVal in Enum.GetValues(typeof(JobFieldType)))
+            get { return inputValue; }
+            set
             {
-                Columns.Add(enumVal);
+                if (value != null) { inputValue = value; }
             }
-
-
         }
+
+        /*  // All columns, for display
+          public List<JobFieldType> Columns { get; set; }
+
+          // View title
+          public string Title { get; set; } = "";
+
+          public SearchJobsViewModel()
+          {
+              // Populate the list of all columns
+
+              Columns = new List<JobFieldType>();
+
+              foreach (JobFieldType enumVal in Enum.GetValues(typeof(JobFieldType)))
+              {
+                  Columns.Add(enumVal);
+              }
+
+
+          }*/
     }
 }
